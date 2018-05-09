@@ -52,7 +52,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>\\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>MrLoopBF.lib;CyAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>MrLoopBF.lib;CyAPI.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;postproc.lib;swresample.lib;swscale.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -73,7 +73,12 @@
     <ClCompile Include="device.cpp" />
     <ClCompile Include="file.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="media.cpp" />
+    <ClCompile Include="desktop.cpp" />
     <ClCompile Include="protocol.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="desktop.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

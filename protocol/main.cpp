@@ -5,48 +5,32 @@
 #include "file.h"
 #include "status.h"
 
-#define FILE_PATH		"outfile.mp4"
-
-FILE *source = NULL;
-
-FILE *open_file(const char *path);
-int close_file(FILE *file);
+#define FILE_PATH		"desktop.ts"
 
 int main(int argc, char *argv[]) {
 	int status, flag=1;
-
+	file_t *source;
 	device = device_init(MASTER, 7);
 	if (device == NULL) {
 		printf("device_init error\n");
 		return -1;
 	}
-	source = open_file(FILE_PATH);
+	source = open_source(FILE_PATH);
 	if (source == NULL) {
 		printf("open_file error\n");
 		return -1;
 	}
-	file_t *file = file_unpack(source);
 	do {
-		status = send_head(file->head);
+		status = send_head(source->head);
 	} while (status != SUCCESS);
 	while (flag) {
-		status = send_frame(file->frame);
+		read_source(source);
+		status = send_frame(source->frame);
 		if (status < 0) {
 			flag = 0;
 		}
 	}
-	close_file(source);
+	close_source(source);
 	device_release(device);
 	return 0;
-}
-
-FILE *open_file(const char *path) {
-	return fopen(path, "rb+");
-}
-
-int close_file(FILE *file) {
-	if (file == NULL) {
-		return 0;
-	}
-	return fclose(file);
 }

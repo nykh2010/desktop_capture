@@ -11,7 +11,6 @@ typedef struct {
 typedef struct frame_t {
 	uint8_t *frame;
 	uint16_t length;
-	struct frame_t *next_frame;
 } frame_t;
 
 typedef struct {
@@ -19,4 +18,6 @@ typedef struct {
 	frame_t *frame;
 } file_t;
 
-file_t *file_unpack(FILE *file);
+file_t *open_source(const char *path);
+int read_source(file_t *source);
+int close_source(file_t *source);
