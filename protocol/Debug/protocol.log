@@ -1,21 +1,20 @@
-﻿生成启动时间为 2018/5/9 13:52:58。
-     1>项目“\\10.10.55.250\cxduserdata250dev\10104841c\Redirect\documents\visual studio 2013\Projects\protocol\protocol\protocol.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2018/5/10 19:31:13。
+     1>项目“\\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\protocol\protocol.vcxproj”在节点 2 上(Build 个目标)。
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(362,5): warning MSB8003: Could not find WindowsSDKDir variable from the registry.  TargetFrameworkVersion or PlatformToolset may be set to an invalid version number.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _USING_V110_SDK71_ /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt desktop.cpp
-         desktop.cpp
-     1>\\10.10.55.250\cxduserdata250dev\10104841c\redirect\documents\visual studio 2013\projects\protocol\include\libavutil\rational.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl- /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _USING_V110_SDK71_ /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt protocol.cpp
+         protocol.cpp
+     1>\\10.10.55.250\cxduserdata250dev\10104841c\redirect\documents\visual studio 2013\projects\protocol\protocol\protocol.cpp(131): warning C4101: “size”: 未引用的局部变量
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1197,5): warning MSB8030: The linker switch "Minimum Required Version" requires "SubSystem" to be set.  Without "SubSystem", the "Minimum Required Version" would not be passed to linker and could prevent to the output binary from running on older Operating Systems.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"\\10.10.55.250\cxduserdata250dev\10104841c\Redirect\documents\visual studio 2013\Projects\protocol\Debug\protocol.exe" /INCREMENTAL /NOLOGO /LIBPATH:"\\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\lib" MrLoopBF.lib CyAPI.lib avcodec.lib avdevice.lib avfilter.lib avformat.lib avutil.lib postproc.lib swresample.lib swscale.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"\\10.10.55.250\cxduserdata250dev\10104841c\Redirect\documents\visual studio 2013\Projects\protocol\Debug\protocol.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"\\10.10.55.250\cxduserdata250dev\10104841c\Redirect\documents\visual studio 2013\Projects\protocol\Debug\protocol.lib" /MACHINE:X86 Debug\device.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"\\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\Debug\protocol.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\ffmpeg-3.4.2-win32-dev\ffmpeg-3.4.2-win32-dev\lib" /LIBPATH:"\\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\lib" MrLoopBF.lib CyAPI.lib avcodec.lib avdevice.lib avfilter.lib avformat.lib avutil.lib postproc.lib swresample.lib swscale.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"\\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\Debug\protocol.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"\\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\Debug\protocol.lib" /MACHINE:X86 Debug\device.obj
          Debug\file.obj
          Debug\main.obj
-         Debug\media.obj
          Debug\desktop.obj
          Debug\protocol.obj
-         protocol.vcxproj -> \\10.10.55.250\cxduserdata250dev\10104841c\Redirect\documents\visual studio 2013\Projects\protocol\Debug\protocol.exe
-     1>已完成生成项目“\\10.10.55.250\cxduserdata250dev\10104841c\Redirect\documents\visual studio 2013\Projects\protocol\protocol\protocol.vcxproj”(Build 个目标)的操作。
+         protocol.vcxproj -> \\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\Debug\protocol.exe
+     1>已完成生成项目“\\10.10.55.250\CXDuserdata250DEV\10104841C\Redirect\Documents\Visual Studio 2013\Projects\protocol\protocol\protocol.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:01.01
+已用时间 00:00:00.72

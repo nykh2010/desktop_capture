@@ -5,12 +5,12 @@
 
 typedef struct {
 	uint8_t * head;
-	uint16_t length;
+	int length;
 } head_t;
 
 typedef struct frame_t {
 	uint8_t *frame;
-	uint16_t length;
+	int length;
 } frame_t;
 
 typedef struct {

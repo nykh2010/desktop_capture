@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[]) {
 	int status, flag=1;
-	file_t *source;
+	file_t *source = NULL;
 	device = device_init(MASTER, 7);
 	if (device == NULL) {
 		printf("device_init error\n");
@@ -24,7 +24,8 @@ int main(int argc, char *argv[]) {
 		status = send_head(source->head);
 	} while (status != SUCCESS);
 	while (flag) {
-		read_source(source);
+		if (read_source(source) < 0)
+			continue;
 		status = send_frame(source->frame);
 		if (status < 0) {
 			flag = 0;

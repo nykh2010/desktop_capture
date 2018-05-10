@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "device.h"
-#include <mrloopbf_release.h>
+#include "mrloopbf_release.h"
 
 #define DEBUG
 
@@ -20,6 +20,9 @@ device_t *device_init(uint8_t mode, uint8_t speed) {
 	device->speed = speed;
 	memset(device->buff, 0x00, sizeof(device->buff));
 	status = ML_Init();
+#ifdef DEBUG
+	status = 0;
+#endif
 	if (status != 0) {
 		goto error;
 	}
@@ -40,7 +43,7 @@ int device_release(device_t *device) {
 	return 0;
 }
 
-int device_send(uint8_t *buff, uint16_t length) {
+int device_send(uint8_t *buff, int length) {
 	if (device == NULL) {
 		printf("device not attach\n");
 		return -1;

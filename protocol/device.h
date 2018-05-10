@@ -14,6 +14,6 @@ typedef struct {
 extern device_t *device;
 
 device_t *device_init(uint8_t mode, uint8_t speed);
-int device_send(uint8_t *buff, uint16_t length);
-int device_receive(uint8_t *buff, uint16_t *length);
+int device_send(uint8_t *buff, int length);
+int device_receive(uint8_t *buff, int *length);
 int device_release(device_t *device);

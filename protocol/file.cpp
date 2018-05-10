@@ -6,6 +6,7 @@
 desktop_capture_t *capture = NULL;
 file_t *source = NULL;
 
+#if 0
 file_t *file_unpack(FILE *file) {	
 	int status;
 	file_t *unpack_file = (file_t *)calloc(1, sizeof(file_t));
@@ -21,6 +22,7 @@ error:
 	free(unpack_file);
 	return NULL;
 }
+#endif
 
 
 file_t *open_source(const char *path) {
@@ -28,13 +30,15 @@ file_t *open_source(const char *path) {
 	if (source == NULL) {
 		return NULL;
 	}
+	source->head = (head_t *)calloc(1, sizeof(head_t));
+	source->frame = (frame_t *)calloc(1, sizeof(frame_t));
 	capture = open_capture(path);
 	if (capture == NULL) {
 		goto error;
 	}
 	while (capture->packet_head->next == NULL);		//等待屏幕捕获开始
-	source->head->head = capture->packet_head->next->data;
-	source->head->length = capture->packet_head->next->size;
+	source->head->head = capture->packet_head->data;
+	source->head->length = capture->packet_head->size;
 	return source;
 error:
 	free(source);
@@ -48,6 +52,7 @@ int read_source(file_t *source) {
 	}
 	source->frame->frame = packet->data;
 	source->frame->length = packet->size;
+	release_packet(packet);
 	return 0;
 }
 
@@ -56,6 +61,8 @@ int close_source(file_t *source) {
 		return -1;
 	}
 	close_capture(capture);
+	free(source->head);
+	free(source->frame);
 	free(source);
 	return 0;
 }

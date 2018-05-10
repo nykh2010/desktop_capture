@@ -13,6 +13,33 @@
 
 #define MAX_PAYLOAD_LENGTH		(MAX_BUFF-START_SIZE-INFOCODE_SIZE-TOTALFRAME_SIZE-INFOSEG_LEN_SIZE-END_SIZE)
 
+#define HEAD		0x00
+#define VIDEO		0x01
+#define AUDIO		0x02
+
+typedef struct {
+	uint16_t length;
+	uint8_t *data;
+} infoseg_t;
+
+#define START_POS			0
+#define	INFOCODE_POS		2
+#define	CURFRAME_POS		3
+#define	TOTALFRAME_POS		5
+#define	INFOSEG_LEN_POS		7
+#define INFOSEG_DATA_POS	9
+typedef struct {
+	uint8_t buff[4096];
+	uint16_t buff_pos;
+	uint16_t start;
+	uint8_t info_code;
+	uint16_t cur_frame;
+	uint16_t total_frame;
+	uint16_t infoseg_len;
+	uint8_t *infoseg_data;
+	uint16_t end;
+} packet_t;
+
 packet_t * create_packet(uint8_t info_code, uint16_t total_frame, infoseg_t * info_seg);
 int send_packet(uint16_t cur_frame, packet_t *packet);
 int send_frame(frame_t *frame);
@@ -50,6 +77,21 @@ packet_t * create_packet(uint8_t info_code, uint16_t total_frame, infoseg_t * in
 int send_head(head_t *head) {
 	uint16_t total_frame;
 	uint16_t cur_frame;
+	uint8_t *buf;
+	uint16_t size;
+	total_frame = head->length / MAX_BUFF;
+	if (head->length % MAX_BUFF) {
+		total_frame += 1;
+	}
+	for (cur_frame = 0; cur_frame < total_frame; cur_frame++) {
+		buf = head->head + cur_frame * MAX_BUFF;
+		size = (cur_frame == total_frame - 1)?(MAX_BUFF):(head->length % MAX_BUFF);
+		device_send(buf,size);
+	}
+	return 0;
+#if 0
+	uint16_t total_frame;
+	uint16_t cur_frame;
 	int status,err_flag=0;
 	total_frame = head->length / MAX_PAYLOAD_LENGTH;
 	if (head->length % MAX_PAYLOAD_LENGTH) {
@@ -79,9 +121,25 @@ int send_head(head_t *head) {
 error:
 	free(info_seg);
 	return -1;
+#endif
 }
 
 int send_frame(frame_t *frame) {
+	uint16_t total_frame;
+	uint16_t cur_frame;
+	uint8_t *buf;
+	int size;
+	total_frame = frame->length / MAX_BUFF;
+	if (frame->length % MAX_BUFF) {
+		total_frame += 1;
+	}
+	for (cur_frame = 0; cur_frame < total_frame; cur_frame++) {
+		buf = frame->frame + cur_frame * MAX_BUFF;
+		//size = (cur_frame != total_frame - 1)?(MAX_BUFF):(frame->length % MAX_BUFF);
+		device_send(buf, MAX_BUFF);
+	}
+	return 0;
+#if 0
 	uint16_t cur_frame=0, total_frame=0;
 	int status;
 	frame_t *curFrame = frame;
@@ -118,4 +176,5 @@ int send_frame(frame_t *frame) {
 error:
 	free(info_seg);
 	return -1;
+#endif
 }

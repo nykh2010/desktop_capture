@@ -1,9 +1,9 @@
 #pragma once
-
-typedef struct packet_t {
+#include <stdint.h>
+typedef struct PACKET {
 	uint8_t *data;
 	int size;
-	struct packet_t *next;
+	struct PACKET *next;
 } packet_t;
 
 typedef struct {
@@ -14,4 +14,5 @@ typedef struct {
 
 desktop_capture_t *open_capture(const char *path);
 packet_t *read_packet();
+int release_packet(packet_t *packet);
 int close_capture(desktop_capture_t *capture);
